@@ -1,0 +1,27 @@
+
+
+- Command to create a WebApi project : dotnet new webapi -o BookShareApp.API -n BookShareApp.API
+- To open vs code inside a folder : cmd to the folder and then use : code .
+- Different used extensions to start building the app in vs code :
+  - c# Extensions
+  - Nuget package manager 
+
+- dotnet ef 
+- dotnet watch run
+- npm install -g @angular/cli@6.0.8
+- ng new BookingShare-SPA
+- Web pack bundle our app and inject the javascript inside our app
+- Angular snippet / Angular files / Angular language services / ANgular switcher / Angular brackets
+  Auto renamae tag / Brackets pair colorizer / debugger for chrome / Materiel icon theme
+  path intellisence / Prettier Code formatter / TSLint 
+
+- ng serve
+
+- npm install bootstrap font-awesome => Intsalling bootstrap and font-awesome
+- git ignore => ignore node modules
+- clear => clear the terminal
+- .gitignore 
+- To set your global username/email configuration:
+- Open the command line.
+- Set your username: git config --global user.name "Zakaria Boukhris"
+- Set your email address: git config --global user.email "boukhriszakaria@gmail.com" 
