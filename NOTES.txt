@@ -25,3 +25,5 @@
 - Open the command line.
 - Set your username: git config --global user.name "Zakaria Boukhris"
 - Set your email address: git config --global user.email "boukhriszakaria@gmail.com" 
+- dotnet ef migrations add AddUserEnt
+- dotnet ef database update
