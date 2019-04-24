@@ -13,9 +13,33 @@ namespace BookShareApp.API.DataAccess
     {
         private DataContext _context;
         public AuthRepository(DataContext context) => this._context = context;
-        public Task<User> Login(string username, string password)
+        public async Task<User> Login(string username, string password)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(i => i.UserName == username);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var passwordHash = user.PasswordHash;
+            var passwordSalt = user.PasswordSalt;
+
+            bool isPassOk = VerifyPassword(password, passwordHash, passwordSalt);
+
+            if (!isPassOk) {
+                return null;
+            }
+
+            return null;
+        }
+
+        private bool VerifyPassword(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA256(passwordHash))
+            {
+                var computed = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return Enumerable.Range(0, computed.Length - 1).All(i => computed[i] == passwordHash[i]);
+            }
         }
 
         public async Task<User> Register(User user, string password)
