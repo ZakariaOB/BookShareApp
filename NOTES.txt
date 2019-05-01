@@ -27,3 +27,4 @@
 - Set your email address: git config --global user.email "boukhriszakaria@gmail.com" 
 - dotnet ef migrations add AddUserEnt
 - dotnet ef database update
+- Register in Startup class : AddTransient (Creating a new instance for each call) / AddScoped (Creating an instance per request)
