@@ -1,0 +1,256 @@
+
+- Git will add a .git folder containing all the information and the history of the solution and other information .
+- The index zone => It's a step between the folder of the solution and the repository => staging
+- You can add or remove from the staing phase
+- Commit is taking all the changes in the repository history
+- Initialize a git repository : git init
+- git status => command to show the status of the workspace
+- Add a file to the index zone (Staging): git add file_name
+- Add files to the staging zone : git add .
+- Remove from the staging zone : git reset file_name (git reset . => all the workspace files)
+- git commit -m"mon message" => all the staged files will be added to the local repository
+- git diff => Modifications related to the changes of the last version
+- For git it's always a question of a new added line or a deleted one even if we have modified a line .
+- git add a file will add it to the staging .
+- git commit will commit file changes to the repository
+
+_____________________________________
+
+History
+
+- Each commit have a SHA1 (40 chars) that identify a commit- 
+- A tag is a pointer to a SHA1
+- The master tag is a pointer to the last commit of the local repo (?? to confirm)
+- Tag head => the pointer where we are (We can navigate using the command checkout SAH1 or checkout TAG)
+- git log => list of commits
+- git log n => show n commits
+- git SHA1 => details of a commit
+- git show master => details of the last commit
+- git checkout SHA1 => Put the head tag to a specific SHA1
+- git log => show the history of files before the Head tag
+- git checkout SHA1 => make the current version as the head => modificatiosn could be noticed 
+- git checkout master => return the head to the master
+- Stage and commit => $ git commit -a -m"Add div boukhris"
+- git checkout => navigate through commits
+- We can add a Tag to a commit => Identify the SHA1 => Help to identify a version (BETA version)
+- git tag => show the available tags
+
+
+ 
+
+__________________________________________________
+
+Github
+
+- Gist => share a part of code
+- fork duplicate a project 
+- issues : History of propostions and improvements checklist
+- pull request => Request to add changes to a distant repository
+
+____________________________________________________
+
+Using a distant repository
+
+- git clone https://github.com/ZakariaOB/git_test.git clone_depot_test
+- git config user.name "clone" => identify the repos doing the changes
+- git remote -v => information about the distant repository used 
+- git remote add origin https://github.com/ZakariaOB/git_test.git clone_depot_test => Link a distant repo to a local repo
+- git push -u origin master (push master to origin)
+- git push origin TAG
+- git push origin --tags => push of all the tags
+- release => tag
+- git fetch => take all the remote changes + change the postion of the tag origin/master and put it on the last commit
+- git pull => Put the tag master on the last commit wich wil give us origin/master = master (Check the schema) 
+- git push => push the committed modifications
+- after git push the tag origin/master will be the same as the head and the master
+
+
+
+___________________________________________________________
+
+Team workspace
+
+- git blame file => show the history of a file
+- ^SHA1 => indicate the SHA1 responsible of creating the file .
+- touch .gitignore => create the .gitignore file (In general touch create a file)
+- mkdir tmp => create a folder
+- echo "Ajouter le fichier .gitignore" > todo.txt
+- git stash => Add files to the stash zone (If you checkout to a different version git will not complain about losing modifcations)
+- git stash list (Probably like shelving)
+- git stash show index
+- git stash pop 0
+- git stash will help before commit to solve merges
+- git merge --abort => ignoring commits merge
+- git pull -rebase
+
+___________________________________________________________
+
+Branchs
+
+-A branche is simply a set of commits
+-Each branch has a tag by default
+-Branchs : Master
+-To create a branch you will need a commit
+-git branch BRANCHE_NAME
+-git branch => show all the existing branchs
+-git branch -a => Get branchs even distant
+-git checkou NEW_BRANCH to make visible to the current repository
+-to copy a commit from a branc to another use : cherry pick 
+-git log BRANCHE_NAME
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Git will add a .git folder containing all the information and the history of the solution and other information .
+- The index zone => It's a step between the folder of the solution and the repository => staging
+- You can add or remove from the staing phase
+- Commit is taking all the changes in the repository history
+- Initialize a git repository : git init
+- git status => command to show the status of the workspace
+- Add a file to the index zone (Staging): git add file_name
+- Add files to the staging zone : git add .
+- Remove from the staging zone : git reset file_name (git reset . => all the workspace files)
+- git commit -m"mon message" => all the staged files will be added to the local repository
+- git diff => Modifications related to the changes of the last version
+- For git it's always a question of a new added line or a deleted one even if we have modified a line .
+- git add a file will add it to the staging .
+- git commit will commit file changes to the repository
+
+_____________________________________
+
+History
+
+- Each commit have a SHA1 (40 chars) that identify a commit- 
+- A tag is a pointer to a SHA1
+- The master tag is a pointer to the last commit of the local repo (?? to confirm)
+- Tag head => the pointer where we are (We can navigate using the command checkout SAH1 or checkout TAG)
+- git log => list of commits
+- git log n => show n commits
+- git SHA1 => details of a commit
+- git show master => details of the last commit
+- git checkout SHA1 => Put the head tag to a specific SHA1
+- git log => show the history of files before the Head tag
+- git checkout SHA1 => make the current version as the head => modificatiosn could be noticed 
+- git checkout master => return the head to the master
+- Stage and commit => $ git commit -a -m"Add div boukhris"
+- git checkout => navigate through commits
+- We can add a Tag to a commit => Identify the SHA1 => Help to identify a version (BETA version)
+- git tag => show the available tags
+
+
+ 
+
+__________________________________________________
+
+Github
+
+- Gist => share a part of code
+- fork duplicate a project 
+- issues : History of propostions and improvements checklist
+- pull request => Request to add changes to a distant repository
+
+____________________________________________________
+
+Using a distant repository
+
+- git clone https://github.com/ZakariaOB/git_test.git clone_depot_test
+- git config user.name "clone" => identify the repos doing the changes
+- git remote -v => information about the distant repository used 
+- git remote add origin https://github.com/ZakariaOB/git_test.git clone_depot_test => Link a distant repo to a local repo
+- git push -u origin master (push master to origin)
+- git push origin TAG
+- git push origin --tags => push of all the tags
+- release => tag
+- git fetch => take all the remote changes + change the postion of the tag origin/master and put it on the last commit
+- git pull => Put the tag master on the last commit wich wil give us origin/master = master (Check the schema) 
+- git push => push the committed modifications
+- after git push the tag origin/master will be the same as the head and the master
+
+
+
+___________________________________________________________
+
+Team workspace
+
+- git blame file => show the history of a file
+- ^SHA1 => indicate the SHA1 responsible of creating the file .
+- touch .gitignore => create the .gitignore file (In general touch create a file)
+- mkdir tmp => create a folder
+- echo "Ajouter le fichier .gitignore" > todo.txt
+- git stash => Add files to the stash zone (If you checkout to a different version git will not complain about losing modifcations)
+- git stash list (Probably like shelving)
+- git stash show index
+- git stash pop 0
+- git stash will help before commit to solve merges
+- git merge --abort => ignoring commits merge
+- git pull -rebase
+
+___________________________________________________________
+
+Branchs
+
+-A branche is simply a set of commits
+-Each branch has a tag by default
+-Branchs : Master
+-To create a branch you will need a commit
+-git branch BRANCHE_NAME
+-git branch => show all the existing branchs
+-git branch -a => Get branchs even distant
+-git checkou NEW_BRANCH to make visible to the current repository
+-to copy a commit from a branc to another use : cherry pick 
+-git log BRANCHE_NAME
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
