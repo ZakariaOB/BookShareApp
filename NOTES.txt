@@ -3,7 +3,7 @@
 - Command to create a WebApi project : dotnet new webapi -o BookShareApp.API -n BookShareApp.API
 - To open vs code inside a folder : cmd to the folder and then use : code .
 - Different used extensions to start building the app in vs code :
-  - c# Extensions
+  - c# Extensions   
   - Nuget package manager 
 
 - dotnet ef 
@@ -28,3 +28,9 @@
 - dotnet ef migrations add AddUserEnt
 - dotnet ef database update
 - Register in Startup class : AddTransient (Creating a new instance for each call) / AddScoped (Creating an instance per request)
+- ApiController usage => Transform an mvc controller to an Api controller
+- The data annotations are added for validation => How does it works ?
+- In the Dto we can send the validation annotations => And idea ?
+- Validation in the API course => 31 Lecture .
+- shutdonw the dotnet watch => Ctrl c
+- to debug => make sure the dotnet watch is running => choose .NET core Attach => dotnet .API project

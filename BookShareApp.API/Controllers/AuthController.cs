@@ -1,8 +1,16 @@
+using System;
+using System.Text;
+using System.Security.Cryptography;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BookShareApp.API.DataAccess;
 using BookShareApp.API.Dto;
 using BookShareApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using BookShareApp.API.Framework;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace BookShareApp.API.Controllers
 {
@@ -11,9 +19,12 @@ namespace BookShareApp.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
-        public AuthController(IAuthRepository repo)
+        private readonly IConfiguration _config;
+
+        public AuthController(IAuthRepository repo, IConfiguration config)
         {
             _repo = repo;
+            _config = config;
         }
 
         [HttpPost("register")]
@@ -34,6 +45,24 @@ namespace BookShareApp.API.Controllers
             var createdUser = await _repo.Register(user, userToCreate.Password);
 
             return StatusCode(201);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserForRegisterDto userDto)
+        {
+            var userFromRepo = await _repo.Login(userDto.UserName, userDto.Password);
+
+            if (userFromRepo == null)
+                return Unauthorized();
+
+            var appSettingsConfig = _config.GetSection(Constants.AppSettingsToken).Value;
+            var tokenResult = Helepr.GenerateJwtToken(userFromRepo.Id.ToString(), userFromRepo.UserName, appSettingsConfig);
+            var returnedToken = new
+            {
+                token = tokenResult
+            };
+
+            return Ok(returnedToken);
         }
     }
 }

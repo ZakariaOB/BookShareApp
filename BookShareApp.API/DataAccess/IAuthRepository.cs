@@ -9,6 +9,6 @@ namespace BookShareApp.API.DataAccess
 
         Task<User> Login(string username, string password);
 
-       Task<bool> UserExists(string username);
+        Task<bool> UserExists(string username);
     }
 }

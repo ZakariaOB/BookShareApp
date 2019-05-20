@@ -30,12 +30,12 @@ namespace BookShareApp.API.DataAccess
                 return null;
             }
 
-            return null;
+            return user;
         }
 
         private bool VerifyPassword(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-            using (var hmac = new HMACSHA256(passwordHash))
+            using (var hmac = new HMACSHA256(passwordSalt))
             {
                 var computed = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 return Enumerable.Range(0, computed.Length - 1).All(i => computed[i] == passwordHash[i]);
