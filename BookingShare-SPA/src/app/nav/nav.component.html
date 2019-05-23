@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Share you books</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Matches <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Messages</a>
+    </li>
+  </ul>
+  <form #loginForm="ngForm" (ngSubmit)="login()" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" 
+            type="text" 
+            placeholder="User name" 
+            aria-label="User name"
+            [(ngModel)]="model.Name"
+            name="username">
+    <input class="form-control mr-sm-2" 
+            type="text" 
+            placeholder="Password" 
+            aria-label="Password"
+            [(ngModel)]="model.Password"
+            name="password">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+  </form>
+</nav>
