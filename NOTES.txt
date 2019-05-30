@@ -34,3 +34,14 @@
 - Validation in the API course => 31 Lecture .
 - shutdonw the dotnet watch => Ctrl c
 - to debug => make sure the dotnet watch is running => choose .NET core Attach => dotnet .API project
+
+
+_________________________
+
+Angular 
+
+- @Injectable => Make sure that a the thing applied on it can be injected .
+- Components are automatically Injectable
+- A service should be declared inside the app module providers
+- The pipe() function takes as its arguments the functions you want to combine, and returns a new function that, when executed, runs the composed functions in sequence.
+https://angular.io/guide/rx-library (search for pipes in this URL, you can find the same)

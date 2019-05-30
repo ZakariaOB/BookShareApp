@@ -30,7 +30,14 @@ namespace BookShareApp.API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                        p => p.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod()
+                                .AllowCredentials());
+            });
             services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
@@ -39,6 +46,7 @@ namespace BookShareApp.API
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("AllowAll");
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -48,6 +56,7 @@ namespace BookShareApp.API
             }
             // To check later
             // app.UseHttpsRedirection();
+            app.UseCors();
             app.UseMvc();
         }
     }

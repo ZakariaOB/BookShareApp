@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { from } from 'rxjs';
+import { AuthService } from './_services/auth.service';
 
 @NgModule({
    declarations: [
@@ -19,7 +20,7 @@ import { from } from 'rxjs';
       HttpClientModule,
       FormsModule
    ],
-   providers: [],
+   providers: [AuthService],
    bootstrap: [
       AppComponent
    ]

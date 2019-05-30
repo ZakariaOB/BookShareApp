@@ -14,17 +14,19 @@
   </ul>
   <form #loginForm="ngForm" (ngSubmit)="login()" class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" 
-            type="text" 
+            type="text"
+            required 
             placeholder="User name" 
             aria-label="User name"
-            [(ngModel)]="model.Name"
+            [(ngModel)]="model.username"
             name="username">
     <input class="form-control mr-sm-2" 
-            type="text" 
+            type="text"
+            required 
             placeholder="Password" 
             aria-label="Password"
-            [(ngModel)]="model.Password"
+            [(ngModel)]="model.password"
             name="password">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
   </form>
 </nav>
