@@ -39,6 +39,7 @@ namespace BookShareApp.API.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            // TODO : This class should be deleted 
         }
 
         // PUT api/values/5

@@ -45,3 +45,9 @@ Angular
 - A service should be declared inside the app module providers
 - The pipe() function takes as its arguments the functions you want to combine, and returns a new function that, when executed, runs the composed functions in sequence.
 https://angular.io/guide/rx-library (search for pipes in this URL, you can find the same)
+- container mt-5 => margin 5 in with the class container .
+- You can add margin using : mr-2
+- Check the output properties to send data from the child to parents components 
+- Internal server error can cause CORS origin error => To ignore 
+- Rethink the api methdos => You can use Fred Way 
+- Think about sending different excpetion message in dev mode or in production env => Lecture 49 .

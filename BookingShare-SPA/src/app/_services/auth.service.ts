@@ -11,7 +11,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(model: any) {
-    console.log(model);
     return this.http.post(this.baserUrl + 'login', model)
       .pipe(map(this.mapLoginResponse));
   }
@@ -21,5 +20,9 @@ export class AuthService {
     if (user) {
       localStorage.setItem('token', user.token);
     }
+  }
+
+  register(model: any) {
+    return this.http.post(this.baserUrl + 'register', model)
   }
 }
