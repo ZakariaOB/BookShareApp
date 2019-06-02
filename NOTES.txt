@@ -51,3 +51,13 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - Internal server error can cause CORS origin error => To ignore 
 - Rethink the api methdos => You can use Fred Way 
 - Think about sending different excpetion message in dev mode or in production env => Lecture 49 .
+- Creating a general error hanlder is great => In angular the ErrorInterceptor
+- Review lecture 48 about the different erros returned to the user .
+- No exception pages are sent to Angualr => Only on Postman .
+- StartUp.cs is the first thing running on a .NET core application .
+- Look at launchSettings.Development.json = > Web.config
+- Hanlde exceptions globally using ExcpetionHandler
+- Seems like 'app.UseCors("AllowAll");' is necessary on the StartUp.cs to allow using cors !! (.NET version ??)
+- Best way to hanlde erros on both sides : Angular add error interceptor and on the 
+   .net core side try to hanlde erros globally inside the startup to create a suitbale http response to send back 
+   to the client . On dev env use the developper exception page but on production cutom the error .

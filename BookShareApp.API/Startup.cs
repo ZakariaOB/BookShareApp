@@ -48,9 +48,10 @@ namespace BookShareApp.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("AllowAll");
+
             if (env.IsDevelopment())
             {
-                app.UseCors("AllowAll");
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -71,7 +72,6 @@ namespace BookShareApp.API
             }
             // To check later
             // app.UseHttpsRedirection();
-            app.UseCors();
             app.UseMvc();
         }
     }
