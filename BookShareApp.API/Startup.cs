@@ -32,7 +32,7 @@ namespace BookShareApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            SetDbConnection(services, UsedDb.SQLServer);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>
             {
@@ -73,6 +73,27 @@ namespace BookShareApp.API
             // To check later
             // app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private void SetDbConnection(IServiceCollection services, UsedDb usedDb)
+        {
+            switch (usedDb)
+            {
+                case UsedDb.SQLServer:
+                    services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("SqlServerLocalConnection")));
+                    break;
+
+                case UsedDb.SqlLite:
+                    services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                    break;
+                default: break;
+            }
+        }
+
+        public enum UsedDb
+        {
+            SQLServer,
+            SqlLite
         }
     }
 }

@@ -34,7 +34,7 @@
 - Validation in the API course => 31 Lecture .
 - shutdonw the dotnet watch => Ctrl c
 - to debug => make sure the dotnet watch is running => choose .NET core Attach => dotnet .API project
-
+- Enable-Migrations -EnableAutomaticMigrations -Force
 
 _________________________
 
@@ -61,3 +61,8 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - Best way to hanlde erros on both sides : Angular add error interceptor and on the 
    .net core side try to hanlde erros globally inside the startup to create a suitbale http response to send back 
    to the client . On dev env use the developper exception page but on production cutom the error .
+
+- npm install alertifyjs --save => This used to install something on the angular project
+- Angular new utilities : You install what you need and then it's in the node_modules , 
+                         after that you can decalre it globally insde angular.json file and styles.class
+- npm will bring the thing to you and you have to use it .
