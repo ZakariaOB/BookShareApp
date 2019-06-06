@@ -10,7 +10,10 @@ import { AlertifyService } from '../_services/alertify.service';
 export class NavComponent implements OnInit {
 
   model: any = {};
-  constructor(private authService: AuthService, private alertifyJs: AlertifyService) { }
+  public authService: AuthService;
+  constructor(_authService: AuthService, private alertifyJs: AlertifyService) {
+    this.authService = _authService;
+  }
 
   ngOnInit() {
   }
@@ -20,18 +23,17 @@ export class NavComponent implements OnInit {
       this.alertifyJs.success('Login success');
     },
       error => {
-        console.log(error);
+        this.alertifyJs.error(error);
       });
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('Logged out');
+    this.alertifyJs.message('Logged out');
   }
 
 }

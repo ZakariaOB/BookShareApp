@@ -16,6 +16,7 @@
   path intellisence / Prettier Code formatter / TSLint 
 
 - ng serve
+- ng serve --open
 
 - npm install bootstrap font-awesome => Intsalling bootstrap and font-awesome
 - git ignore => ignore node modules
@@ -65,4 +66,14 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - npm install alertifyjs --save => This used to install something on the angular project
 - Angular new utilities : You install what you need and then it's in the node_modules , 
                          after that you can decalre it globally insde angular.json file and styles.class
-- npm will bring the thing to you and you have to use it .
+- npm will bring the thing to you and you have to use it => altertifyJs
+- It's good to use a jwt token library on the Angular side , at least : Validate if it's a jwt token , expiry date, extract data etc ..
+- npm install @auth0/angular-jwt => auth0 for jwt angular
+
+- the this keyword inside a delegate is misleading => Angular
+- ngx bootstrap => Bring some functionnality to Angular
+- npm install ngx-bootstrap --save => BsDropdownModule
+- Colors : Boostwatch
+
+- The order of the routes inside the routes folder is important => Priority order .
+- Import RouterModule to be able to use Routes inside Angular .
