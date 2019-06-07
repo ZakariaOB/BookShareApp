@@ -5,3 +5,10 @@
 .title {
     font:xx-large;
 }
+
+.btn-login {
+    color: white;
+    background-color: #02B875;
+    background-image: none;
+    border-color: #02B875;
+}

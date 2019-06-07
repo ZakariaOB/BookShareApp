@@ -34,6 +34,7 @@ namespace BookShareApp.API
         {
             SetDbConnection(services, UsedDb.SQLServer);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<Seed>();
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -46,7 +47,7 @@ namespace BookShareApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             app.UseCors("AllowAll");
 
@@ -72,6 +73,8 @@ namespace BookShareApp.API
             }
             // To check later
             // app.UseHttpsRedirection();
+            seeder.SeedUsers();
+            app.UseAuthentication(); // TODO check the usage of this (How does the middleware works)
             app.UseMvc();
         }
 
