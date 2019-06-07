@@ -17,6 +17,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using BookShareApp.API.Framework;
+using AutoMapper;
 
 namespace BookShareApp.API
 {
@@ -33,8 +34,14 @@ namespace BookShareApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             SetDbConnection(services, UsedDb.SQLServer);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    .AddJsonOptions(opt =>
+                    {
+                        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    });
             services.AddTransient<Seed>();
+            services.AddJwtAuthenticationValidation(Configuration);
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -43,7 +50,9 @@ namespace BookShareApp.API
                                 .AllowAnyMethod()
                                 .AllowCredentials());
             });
+            services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IBookShareRepository, BookShareRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,7 +82,7 @@ namespace BookShareApp.API
             }
             // To check later
             // app.UseHttpsRedirection();
-            seeder.SeedUsers();
+            //seeder.SeedUsers();
             app.UseAuthentication(); // TODO check the usage of this (How does the middleware works)
             app.UseMvc();
         }

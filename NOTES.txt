@@ -80,9 +80,9 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - Subscribe method => next, error and complete .
 - Route guard will prevent people from accessing to pages directly from the browser address bar ! 
 - To generate a guard : ng g guard auth --spec=false 
-- AuthGuard is like a filter that you run before accessing to a page => VErify authentication
+- AuthGuard is like a filter that you run before accessing to a page => Verify authentication
 - We can multiple multiple routes with same route guard => Check routes.ts
 - Routes => children && members will be added !!
 - Ef core is different => Check docs && code first is cool 
 - services.AddTransient<Seed>(); = > will inject inside the ocnfigure method
-- Lecture 71
+
