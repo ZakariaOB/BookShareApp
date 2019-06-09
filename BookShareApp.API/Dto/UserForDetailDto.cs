@@ -25,8 +25,6 @@ namespace BookShareApp.API.Dto
         public string City { get; set; }
 
         public string Country { get; set; }
-
-        public ICollection<PhotoForDetailDto> Photos {get; set;}
         public string PhotoUrl {get; set;}
         public int Age {get; set;}
     }

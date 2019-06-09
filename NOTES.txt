@@ -81,8 +81,17 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - Route guard will prevent people from accessing to pages directly from the browser address bar ! 
 - To generate a guard : ng g guard auth --spec=false 
 - AuthGuard is like a filter that you run before accessing to a page => Verify authentication
-- We can multiple multiple routes with same route guard => Check routes.ts
+- We can have multiple routes with same route guard => Check routes.ts
 - Routes => children && members will be added !!
-- Ef core is different => Check docs && code first is cool 
+- Ef core is different => Check docs && code first is cool (The model snapshot)
 - services.AddTransient<Seed>(); = > will inject inside the ocnfigure method
+- Consider Dtos and Automapper => Good way of reimplementing the thing
+- Section 9
+
+-Interfaces in Typescript usage is interesting => Check it // TODO
+-Optinal properties in typescript should be marked with ? => interface IDo { optionalParam?: any }
+-Typescript interface => Compile time checking, intellisence, Auto completion .
+-Lecture 84 => Css .
+-Absolute positioning => How it works
+-Lecture 86 .
 

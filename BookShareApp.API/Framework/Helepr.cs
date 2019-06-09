@@ -72,7 +72,7 @@ namespace BookShareApp.API.Framework
             var dateOfBirthWithAge = dateOfBirth.AddYears(age);
             if (dateOfBirthWithAge > DateTime.UtcNow)
             {
-                age--;
+                age++;
             }
 
             return age;
