@@ -92,6 +92,12 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 -Optinal properties in typescript should be marked with ? => interface IDo { optionalParam?: any }
 -Typescript interface => Compile time checking, intellisence, Auto completion .
 -Lecture 84 => Css .
--Absolute positioning => How it works
--Lecture 86 .
+-Absolute positioning => How it works in CSS ?
+
+-blacklistedRoutes: ['localhost:5000/api/auth/'] => Not sending the token to this address (We don't need to)
+-Generally forRoot is used to add application/singleton services.
+-You can add jwt token to each request going to the server => Check app.module.ts
+-Check => this.route.snapshot.params['id']
+-Save navigation operators => We could have a component not fully loaded .
+-Lecture 88
 
