@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { MemberCardComponent } from './member/member-card/member-card.component';
 import { MessageComponent } from './message/message.component';
@@ -23,6 +23,8 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -46,6 +48,7 @@ export function tokenGetter() {
       HttpClientModule,
       FormsModule,
       BsDropdownModule.forRoot(),
+      TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
          config: {
@@ -60,7 +63,9 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      MemberDetailResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent

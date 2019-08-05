@@ -11,7 +11,7 @@
 - npm install -g @angular/cli@6.0.8
 - ng new BookingShare-SPA
 - Web pack bundle our app and inject the javascript inside our app
-- Angular snippet / Angular files / Angular language services / ANgular switcher / Angular brackets
+- Angular snippet / Angular files / Angular language services / Angular switcher / Angular brackets
   Auto renamae tag / Brackets pair colorizer / debugger for chrome / Materiel icon theme
   path intellisence / Prettier Code formatter / TSLint 
 
@@ -52,7 +52,7 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - Internal server error can cause CORS origin error => To ignore 
 - Rethink the api methdos => You can use Fred Way 
 - Think about sending different excpetion message in dev mode or in production env => Lecture 49 .
-- Creating a general error hanlder is great => In angular the ErrorInterceptor
+- Creating a general error hanlder is great => In angular the ErrorInterceptor (How does it works)
 - Review lecture 48 about the different erros returned to the user .
 - No exception pages are sent to Angualr => Only on Postman .
 - StartUp.cs is the first thing running on a .NET core application .
@@ -70,7 +70,7 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - It's good to use a jwt token library on the Angular side , at least : Validate if it's a jwt token , expiry date, extract data etc ..
 - npm install @auth0/angular-jwt => auth0 for jwt angular
 
-- the this keyword inside a delegate is misleading => Angular
+- the this keyword inside a delegate is misleading => Angular ???
 - ngx bootstrap => Bring some functionnality to Angular
 - npm install ngx-bootstrap --save => BsDropdownModule
 - Colors : Boostwatch
@@ -101,3 +101,7 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 -Save navigation operators => We could have a component not fully loaded .
 -Lecture 88
 
+- RESOLVERS
+- Resolvers gives you the ability to retreive the data from the route itself . As an example => MemberDetailResolver .
+- With resolvers we don't need anymore safe navigation operators : ? => The data is ready before the page is loaded .
+- 99
