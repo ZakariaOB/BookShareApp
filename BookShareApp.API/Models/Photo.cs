@@ -20,6 +20,8 @@ namespace BookShareApp.API.Models
 
         public int UserId {get; set;}
 
+        public string PublicId {get; set;}
+
         public User User { get; set; }
     }
 }

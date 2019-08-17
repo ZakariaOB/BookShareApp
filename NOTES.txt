@@ -104,4 +104,19 @@ https://angular.io/guide/rx-library (search for pipes in this URL, you can find 
 - RESOLVERS
 - Resolvers gives you the ability to retreive the data from the route itself . As an example => MemberDetailResolver .
 - With resolvers we don't need anymore safe navigation operators : ? => The data is ready before the page is loaded .
-- 99
+- npm install ngx-gallery@5.3.2 --save
+- You can link a button to a diffrent form using form attribute of the button => Lecture 96
+- Lecture 97 : CanDeactivate route => Route guard .
+    - Host listner can listen to changes coming from the browser => Detecting closing the browser window .
+
+Section 11 : Adding photos upload functionnality
+
+- Photos storage options
+  - Blob storage in the database => Less efficient way / Bad choice => Scalability
+  - File system : Disk space problems and Scalability
+  - Third part provider to store our images .
+  - Good choice => https://cloudinary.com/
+   - SDK for .NET
+   - Authentication system to use their system back and forth / cloudinary => Z@k@ri@1987
+- Very nice way to map CloudinarySettings class to it's config section 
+  => services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));

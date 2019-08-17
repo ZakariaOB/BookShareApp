@@ -30,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^4.2.0",
     "ngx-editor": "^4.1.0",
+    "ngx-gallery": "^5.10.0",
     "rxjs": "6.5.2",
     "zone.js": "^0.9.1"
   },
