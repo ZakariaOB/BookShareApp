@@ -9,7 +9,8 @@ namespace BookShareApp.API.DataAccess
     public class BookShareRepository : IBookShareRepository
     {
         private readonly DataContext _context;
-        public BookShareRepository(DataContext context) {
+        public BookShareRepository(DataContext context)
+        {
             this._context = context;
         }
         public void Add<T>(T entity) where T : class
@@ -20,6 +21,12 @@ namespace BookShareApp.API.DataAccess
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
         }
 
         public async Task<User> GetUser(int id)
@@ -37,6 +44,11 @@ namespace BookShareApp.API.DataAccess
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public Task<Photo> GetMainPhotoForUser(int userId)
+        {
+            return _context.Photos.FirstOrDefaultAsync(u => u.UserId == userId && u.IsMain);
         }
     }
 }

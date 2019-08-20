@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using BookShareApp.API.Framework;
 using AutoMapper;
+using BookShareApp.API.Config;
 
 namespace BookShareApp.API
 {
@@ -42,6 +43,7 @@ namespace BookShareApp.API
                     });
             services.AddTransient<Seed>();
             services.AddJwtAuthenticationValidation(Configuration);
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",

@@ -120,3 +120,9 @@ Section 11 : Adding photos upload functionnality
    - Authentication system to use their system back and forth / cloudinary => Z@k@ri@1987
 - Very nice way to map CloudinarySettings class to it's config section 
   => services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+- FromForm in the WebApi is necessary to make the action visible on the Api side . => To check .
+- ng-2 file upload
+- Donet core certification expire : http://www.waynethompson.com.au/blog/dotnet-dev-certs-https/
+   - dotnet dev-certs https --clean
+   - dotnet dev-certs https -t
+- Lecture 114 .
