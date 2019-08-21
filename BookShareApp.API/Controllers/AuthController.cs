@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using BookShareApp.API.Framework;
 using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
 
 namespace BookShareApp.API.Controllers
 {
@@ -20,9 +21,11 @@ namespace BookShareApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        public IMapper _mapper { get; }
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
+            this._mapper = mapper;
             _repo = repo;
             _config = config;
         }
@@ -57,9 +60,12 @@ namespace BookShareApp.API.Controllers
 
             var appSettingsConfig = _config.GetSection(Constants.AppSettingsToken).Value;
             var tokenResult = Helepr.GenerateJwtToken(userFromRepo.Id.ToString(), userFromRepo.UserName, appSettingsConfig);
+            var user = _mapper.Map<UserForListDto>(userFromRepo);
+
             var returnedToken = new
             {
-                token = tokenResult
+                token = tokenResult,
+                user = user
             };
 
             return Ok(returnedToken);

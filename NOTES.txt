@@ -125,4 +125,4 @@ Section 11 : Adding photos upload functionnality
 - Donet core certification expire : http://www.waynethompson.com.au/blog/dotnet-dev-certs-https/
    - dotnet dev-certs https --clean
    - dotnet dev-certs https -t
-- Lecture 114 .
+- next with observables will tell to the observable to change and to update the value => BehaviorSubject .

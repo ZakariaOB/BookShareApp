@@ -12,3 +12,9 @@
     background-image: none;
     border-color: #02B875;
 }
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
+}

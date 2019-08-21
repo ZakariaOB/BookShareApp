@@ -15,7 +15,7 @@ namespace BookShareApp.API.DataAccess
         public AuthRepository(DataContext context) => this._context = context;
         public async Task<User> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(i => i.UserName == username);
+            var user = await _context.Users.Include(r => r.Photos).FirstOrDefaultAsync(i => i.UserName == username);
             if (user == null)
             {
                 return null;

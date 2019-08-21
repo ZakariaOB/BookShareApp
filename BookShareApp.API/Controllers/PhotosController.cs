@@ -5,6 +5,7 @@ using AutoMapper;
 using BookShareApp.API.Config;
 using BookShareApp.API.DataAccess;
 using BookShareApp.API.Dto;
+using BookShareApp.API.Framework;
 using BookShareApp.API.Models;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
@@ -126,6 +127,33 @@ namespace BookShareApp.API.Controllers
             }
 
             return BadRequest("Could not add the photo");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            if (!isUserAuthorizd(userId))
+                return Unauthorized();
+
+            var user = await _repository.GetUser(userId);
+            if (!user.Photos.Any(a => a.Id == id))
+                return Unauthorized();
+
+            var photoFromRepo = await _repository.GetPhoto(id);
+            if (photoFromRepo.IsMain)
+                return BadRequest("Please make sure to have a main photo");
+
+
+            var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+            var result = _cloudinary.Destroy(deleteParams);
+
+            if (result.Result == Constants.CloudinarySuccessResponse)
+                _repository.Delete(photoFromRepo);
+
+            if (await _repository.SaveAll())
+                return Ok();
+
+            return BadRequest();
         }
 
         private bool isUserAuthorizd(int userId)

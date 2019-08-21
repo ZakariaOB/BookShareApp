@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {environment} from 'src/environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from '../_models/User';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../_models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import {User} from '../_models/User';
 export class UserService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + 'users');
@@ -29,5 +29,10 @@ export class UserService {
       this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain',
       {}
     );
+  }
+
+  deletePhoto(userId: number, id: number) {
+    return this.http.delete(
+      this.baseUrl + 'users/' + userId + '/photos/' + id);
   }
 }
