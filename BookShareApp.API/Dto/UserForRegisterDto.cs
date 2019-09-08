@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookShareApp.API.Dto
@@ -8,7 +9,27 @@ namespace BookShareApp.API.Dto
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {1} characters long.", MinimumLength = 5)]
         public string Password { get; set; }
+
+        public string Gender { get; set; }
+
+        public string knownAs { get; set; }
+
+        [Required]
+        public DateTime DateOfBirth { get; set; }
+
+        public string City { get; set; }
+
+        public string Country { get; set; }
+
+        public DateTime Created { get; set; }
+
+        public DateTime LastActive { get; set; }
+
+        public UserForRegisterDto() {
+            Created = DateTime.Now;
+            LastActive = DateTime.Now;
+        }
     }
 }

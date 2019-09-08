@@ -17,6 +17,7 @@ namespace BookShareApp.API.Config
             CreateMap<UserForUpdateDto, User>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<UserForRegisterDto, User>();
         }
 
         private void ApplyUserMapping<T>() where T : IUserDto

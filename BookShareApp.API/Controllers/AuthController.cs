@@ -31,23 +31,23 @@ namespace BookShareApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userToCreate)
+        public async Task<IActionResult> Register(UserForRegisterDto userToCreateDto)
         {
-            userToCreate.UserName = userToCreate.UserName.ToLower();
+            userToCreateDto.UserName = userToCreateDto.UserName.ToLower();
 
-            if (await _repo.UserExists(userToCreate.UserName))
+            if (await _repo.UserExists(userToCreateDto.UserName))
             {
                 return BadRequest("User name already exists");
             }
 
-            var user = new User
-            {
-                UserName = userToCreate.UserName
-            };
+            var userToCreate = _mapper.Map<User>(userToCreateDto);
 
-            var createdUser = await _repo.Register(user, userToCreate.Password);
+            var createdUser = await _repo.Register(userToCreate, userToCreateDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetailDto>(createdUser);
+
+            return CreatedAtRoute("GetUser", new { Controller = "Users", id = createdUser.Id }, userToReturn);
+            //return CreatedAtRoute("GetUser",userToReturn, null);
         }
 
         [HttpPost("login")]

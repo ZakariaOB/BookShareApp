@@ -126,3 +126,9 @@ Section 11 : Adding photos upload functionnality
    - dotnet dev-certs https --clean
    - dotnet dev-certs https -t
 - next with observables will tell to the observable to change and to update the value => BehaviorSubject .
+- Lecture 125 => Reactive form builder .
+- npm install @angular/animations@latest --save => Browser animations module
+- The good message from the server os not returned .
+- [HttpGet("{id}", Name = "GetUser")] => May be this is necessary to return a new route vale as a result 
+  of an operation => Final leture of the rigistration modeule .
+- Lecture 131
