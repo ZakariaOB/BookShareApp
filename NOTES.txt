@@ -134,7 +134,13 @@ Section 11 : Adding photos upload functionnality
   of an operation => Final leture of the rigistration modeule .
 - Done the reactive forms => Feel free to check the subject more and more .
 
-Section 12 : Action filters
+Section 13 : Action filters
 
 - In .NET core we can get the repo service using from an action filter : 
  => var repo = resultContext.HttpContext.RequestServices.GetService<IBookShareRepository>(); 
+- The idea behind the action the action filter is that you can listen to any call of a certain controller or a specific action
+ to log some specific behavior . The last active field is a very good example of that .
+
+
+ Section 14 
+ - ?
