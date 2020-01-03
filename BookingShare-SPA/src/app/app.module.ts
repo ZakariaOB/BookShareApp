@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -50,7 +51,8 @@ export function tokenGetter() {
       ListsComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotosEditorComponent
+      PhotosEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,

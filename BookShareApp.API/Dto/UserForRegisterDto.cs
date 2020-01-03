@@ -9,7 +9,7 @@ namespace BookShareApp.API.Dto
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(4, ErrorMessage = "The {0} must be at least {1} characters long.", MinimumLength = 5)]
+        //[StringLength(4, ErrorMessage = "The {0} must be at least {1} characters long.", MinimumLength = 5)]
         public string Password { get; set; }
 
         public string Gender { get; set; }

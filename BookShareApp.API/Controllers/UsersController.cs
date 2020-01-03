@@ -8,9 +8,11 @@ using BookShareApp.API.DataAccess;
 using BookShareApp.API.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using BookShareApp.API.Framework;
 
 namespace BookShareApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]

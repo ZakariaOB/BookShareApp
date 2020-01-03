@@ -133,3 +133,8 @@ Section 11 : Adding photos upload functionnality
 - [HttpGet("{id}", Name = "GetUser")] => May be this is necessary to return a new route vale as a result 
   of an operation => Final leture of the rigistration modeule .
 - Done the reactive forms => Feel free to check the subject more and more .
+
+Section 12 : Action filters
+
+- In .NET core we can get the repo service using from an action filter : 
+ => var repo = resultContext.HttpContext.RequestServices.GetService<IBookShareRepository>(); 
