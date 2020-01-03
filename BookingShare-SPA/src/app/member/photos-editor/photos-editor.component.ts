@@ -1,15 +1,15 @@
-import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
-import {Photo} from 'src/app/_models/photo';
-import {FileUploader} from 'ng2-file-upload';
-import {environment} from 'src/environments/environment';
-import {AuthService} from 'src/app/_services/auth.service';
-import {AlertifyService} from 'src/app/_services/alertify.service';
-import {UserService} from 'src/app/_services/user.service';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Photo } from 'src/app/_models/photo';
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/_services/auth.service';
+import { AlertifyService } from 'src/app/_services/alertify.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-photos-editor',
   templateUrl: './photos-editor.component.html',
-  styleUrls: ['./photos-editor.component.css'],
+  styleUrls: ['./photos-editor.component.css']
 })
 export class PhotosEditorComponent implements OnInit {
   @Input() photos: Photo[];
@@ -46,7 +46,7 @@ export class PhotosEditorComponent implements OnInit {
       allowedFileType: ['image'],
       removeAfterUpload: true,
       autoUpload: false,
-      maxFileSize: this.maxFileSzie_10_Meg,
+      maxFileSize: this.maxFileSzie_10_Meg
     });
 
     // Suppress a problem encountred during the upload process .
@@ -62,10 +62,13 @@ export class PhotosEditorComponent implements OnInit {
           url: result.url,
           dateAdded: result.dateAdded,
           description: result.description,
-          isMain: result.isMain,
+          isMain: result.isMain
         };
 
         this.photos.push(photo);
+        if (photo.isMain) {
+          this.changeMemberPhoto(photo);
+        }
       }
     };
   }
@@ -78,12 +81,7 @@ export class PhotosEditorComponent implements OnInit {
           this.currentMain = this.photos.filter(p => p.isMain === true)[0];
           this.currentMain.isMain = false;
           photo.isMain = true;
-          this.authService.changeMemberPhoto(photo.url);
-          this.authService.currentUser.photoUrl = photo.url;
-          localStorage.setItem(
-            'user',
-            JSON.stringify(this.authService.currentUser)
-          );
+          this.changeMemberPhoto(photo);
         },
         error => {
           this.alertify.error(error);
@@ -99,7 +97,10 @@ export class PhotosEditorComponent implements OnInit {
           .deletePhoto(this.authService.decodedToken.nameid, id)
           .subscribe(
             () => {
-              this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+              this.photos.splice(
+                this.photos.findIndex(p => p.id === id),
+                1
+              );
               this.alertify.success('Photo has been deleted .');
             },
             error => {
@@ -108,5 +109,14 @@ export class PhotosEditorComponent implements OnInit {
           );
       }
     );
+  }
+
+  private changeMemberPhoto(photo: Photo): void {
+    if (!photo.isMain) {
+      return;
+    }
+    this.authService.changeMemberPhoto(photo.url);
+    this.authService.currentUser.photoUrl = photo.url;
+    localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
   }
 }

@@ -47,7 +47,6 @@ namespace BookShareApp.API.Controllers
             var userToReturn = _mapper.Map<UserForDetailDto>(createdUser);
 
             return CreatedAtRoute("GetUser", new { Controller = "Users", id = createdUser.Id }, userToReturn);
-            //return CreatedAtRoute("GetUser",userToReturn, null);
         }
 
         [HttpPost("login")]
