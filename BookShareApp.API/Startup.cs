@@ -42,8 +42,7 @@ namespace BookShareApp.API
                 options.AddPolicy("AllowAll",
                         p => p.AllowAnyOrigin()
                                 .AllowAnyHeader()
-                                .AllowAnyMethod()
-                                .AllowCredentials());
+                                .AllowAnyMethod());
             });
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();

@@ -9,6 +9,8 @@ using BookShareApp.API.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BookShareApp.API.Framework;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace BookShareApp.API.Controllers
 {
@@ -29,10 +31,14 @@ namespace BookShareApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]UserParams usersParams)
         {
-            var users = await _repo.GetUsers();
+            var users = await _repo.GetUsers(usersParams);
             IEnumerable<UserForDetailDto> usersToReturn = _mapper.Map<IEnumerable<UserForDetailDto>>(users);
+
+            Response.AddPagination(users.CurrentPage, users.PageSize, 
+                users.TotalCount, users.TotalPages);
+
             return Ok(usersToReturn);
         }
 

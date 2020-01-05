@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace BookShareApp.API.Framework
 {
@@ -42,6 +44,17 @@ namespace BookShareApp.API.Framework
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+
+        public static void AddPagination(this HttpResponse response, int currentPage,
+        int itemsPergae, int totalItems, int totalPages) {
+           var paginationHeader = new PaginationHeader(currentPage, itemsPergae, totalItems, totalPages);
+           
+           var camelCaseFormatter = new JsonSerializerSettings();
+           camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
+           
+           response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCaseFormatter));
+           response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
 
         public static void AddJwtAuthenticationValidation(this IServiceCollection services, IConfiguration config)

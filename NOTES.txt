@@ -136,11 +136,15 @@ Section 11 : Adding photos upload functionnality
 
 Section 13 : Action filters
 
-- In .NET core we can get the repo service using from an action filter : 
+- In .NET core we can get the repo service from an action filter : 
  => var repo = resultContext.HttpContext.RequestServices.GetService<IBookShareRepository>(); 
 - The idea behind the action the action filter is that you can listen to any call of a certain controller or a specific action
  to log some specific behavior . The last active field is a very good example of that .
 
 
  Section 14 
- - ?
+ - Check the difference between the return type of api controllers : HttpReponseMessage, IActionResult or simply a model 
+   as done in Everest .
+ - [FromQuery] This will help the Get api method to understand the paramaters sent => [FromQuery]userParams
+ - 145 : Filtering in the API => Section 
+ 
